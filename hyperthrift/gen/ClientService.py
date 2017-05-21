@@ -7,7 +7,7 @@
 #
 
 from thrift.Thrift import TType, TMessageType, TException
-from ttypes import *
+from .ttypes import *
 from thrift.Thrift import TProcessor
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol, TProtocol
@@ -6152,7 +6152,7 @@ class Processor(Iface, TProcessor):
     result = namespace_create_result()
     try:
       self._handler.namespace_create(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("namespace_create", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6166,7 +6166,7 @@ class Processor(Iface, TProcessor):
     result = create_namespace_result()
     try:
       self._handler.create_namespace(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("create_namespace", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6180,7 +6180,7 @@ class Processor(Iface, TProcessor):
     result = create_table_result()
     try:
       self._handler.create_table(args.ns, args.table_name, args.schema)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("create_table", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6194,7 +6194,7 @@ class Processor(Iface, TProcessor):
     result = table_create_result()
     try:
       self._handler.table_create(args.ns, args.table_name, args.schema)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_create", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6208,7 +6208,7 @@ class Processor(Iface, TProcessor):
     result = alter_table_result()
     try:
       self._handler.alter_table(args.ns, args.table_name, args.schema)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("alter_table", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6222,7 +6222,7 @@ class Processor(Iface, TProcessor):
     result = table_alter_result()
     try:
       self._handler.table_alter(args.ns, args.table_name, args.schema)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_alter", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6236,7 +6236,7 @@ class Processor(Iface, TProcessor):
     result = refresh_table_result()
     try:
       self._handler.refresh_table(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("refresh_table", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6250,7 +6250,7 @@ class Processor(Iface, TProcessor):
     result = namespace_open_result()
     try:
       result.success = self._handler.namespace_open(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("namespace_open", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6264,7 +6264,7 @@ class Processor(Iface, TProcessor):
     result = open_namespace_result()
     try:
       result.success = self._handler.open_namespace(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("open_namespace", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6278,7 +6278,7 @@ class Processor(Iface, TProcessor):
     result = namespace_close_result()
     try:
       self._handler.namespace_close(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("namespace_close", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6292,7 +6292,7 @@ class Processor(Iface, TProcessor):
     result = close_namespace_result()
     try:
       self._handler.close_namespace(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("close_namespace", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6306,7 +6306,7 @@ class Processor(Iface, TProcessor):
     result = future_open_result()
     try:
       result.success = self._handler.future_open(args.capacity)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_open", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6320,7 +6320,7 @@ class Processor(Iface, TProcessor):
     result = open_future_result()
     try:
       result.success = self._handler.open_future(args.capacity)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("open_future", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6334,7 +6334,7 @@ class Processor(Iface, TProcessor):
     result = future_cancel_result()
     try:
       self._handler.future_cancel(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_cancel", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6348,7 +6348,7 @@ class Processor(Iface, TProcessor):
     result = cancel_future_result()
     try:
       self._handler.cancel_future(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("cancel_future", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6362,7 +6362,7 @@ class Processor(Iface, TProcessor):
     result = future_get_result_result()
     try:
       result.success = self._handler.future_get_result(args.ff, args.timeout_millis)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_get_result", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6376,7 +6376,7 @@ class Processor(Iface, TProcessor):
     result = get_future_result_result()
     try:
       result.success = self._handler.get_future_result(args.ff, args.timeout_millis)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_future_result", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6390,7 +6390,7 @@ class Processor(Iface, TProcessor):
     result = future_get_result_as_arrays_result()
     try:
       result.success = self._handler.future_get_result_as_arrays(args.ff, args.timeout_millis)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_get_result_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6404,7 +6404,7 @@ class Processor(Iface, TProcessor):
     result = get_future_result_as_arrays_result()
     try:
       result.success = self._handler.get_future_result_as_arrays(args.ff, args.timeout_millis)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_future_result_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6418,7 +6418,7 @@ class Processor(Iface, TProcessor):
     result = future_get_result_serialized_result()
     try:
       result.success = self._handler.future_get_result_serialized(args.ff, args.timeout_millis)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_get_result_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6432,7 +6432,7 @@ class Processor(Iface, TProcessor):
     result = get_future_result_serialized_result()
     try:
       result.success = self._handler.get_future_result_serialized(args.ff, args.timeout_millis)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_future_result_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6446,7 +6446,7 @@ class Processor(Iface, TProcessor):
     result = future_is_empty_result()
     try:
       result.success = self._handler.future_is_empty(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_is_empty", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6460,7 +6460,7 @@ class Processor(Iface, TProcessor):
     result = future_is_full_result()
     try:
       result.success = self._handler.future_is_full(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_is_full", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6474,7 +6474,7 @@ class Processor(Iface, TProcessor):
     result = future_is_cancelled_result()
     try:
       result.success = self._handler.future_is_cancelled(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_is_cancelled", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6488,7 +6488,7 @@ class Processor(Iface, TProcessor):
     result = future_has_outstanding_result()
     try:
       result.success = self._handler.future_has_outstanding(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_has_outstanding", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6502,7 +6502,7 @@ class Processor(Iface, TProcessor):
     result = future_close_result()
     try:
       self._handler.future_close(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("future_close", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6516,7 +6516,7 @@ class Processor(Iface, TProcessor):
     result = close_future_result()
     try:
       self._handler.close_future(args.ff)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("close_future", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6530,7 +6530,7 @@ class Processor(Iface, TProcessor):
     result = scanner_open_result()
     try:
       result.success = self._handler.scanner_open(args.ns, args.table_name, args.scan_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_open", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6544,7 +6544,7 @@ class Processor(Iface, TProcessor):
     result = open_scanner_result()
     try:
       result.success = self._handler.open_scanner(args.ns, args.table_name, args.scan_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("open_scanner", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6558,7 +6558,7 @@ class Processor(Iface, TProcessor):
     result = async_scanner_open_result()
     try:
       result.success = self._handler.async_scanner_open(args.ns, args.table_name, args.future, args.scan_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_scanner_open", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6572,7 +6572,7 @@ class Processor(Iface, TProcessor):
     result = open_scanner_async_result()
     try:
       result.success = self._handler.open_scanner_async(args.ns, args.table_name, args.future, args.scan_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("open_scanner_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6586,7 +6586,7 @@ class Processor(Iface, TProcessor):
     result = scanner_close_result()
     try:
       self._handler.scanner_close(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_close", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6600,7 +6600,7 @@ class Processor(Iface, TProcessor):
     result = close_scanner_result()
     try:
       self._handler.close_scanner(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("close_scanner", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6614,7 +6614,7 @@ class Processor(Iface, TProcessor):
     result = async_scanner_cancel_result()
     try:
       self._handler.async_scanner_cancel(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_scanner_cancel", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6628,7 +6628,7 @@ class Processor(Iface, TProcessor):
     result = cancel_scanner_async_result()
     try:
       self._handler.cancel_scanner_async(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("cancel_scanner_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6642,7 +6642,7 @@ class Processor(Iface, TProcessor):
     result = async_scanner_close_result()
     try:
       self._handler.async_scanner_close(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_scanner_close", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6656,7 +6656,7 @@ class Processor(Iface, TProcessor):
     result = close_scanner_async_result()
     try:
       self._handler.close_scanner_async(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("close_scanner_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6670,7 +6670,7 @@ class Processor(Iface, TProcessor):
     result = scanner_get_cells_result()
     try:
       result.success = self._handler.scanner_get_cells(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_get_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6684,7 +6684,7 @@ class Processor(Iface, TProcessor):
     result = next_cells_result()
     try:
       result.success = self._handler.next_cells(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("next_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6698,7 +6698,7 @@ class Processor(Iface, TProcessor):
     result = scanner_get_cells_as_arrays_result()
     try:
       result.success = self._handler.scanner_get_cells_as_arrays(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_get_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6712,7 +6712,7 @@ class Processor(Iface, TProcessor):
     result = next_cells_as_arrays_result()
     try:
       result.success = self._handler.next_cells_as_arrays(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("next_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6726,7 +6726,7 @@ class Processor(Iface, TProcessor):
     result = scanner_get_cells_serialized_result()
     try:
       result.success = self._handler.scanner_get_cells_serialized(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_get_cells_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6740,7 +6740,7 @@ class Processor(Iface, TProcessor):
     result = next_cells_serialized_result()
     try:
       result.success = self._handler.next_cells_serialized(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("next_cells_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6754,7 +6754,7 @@ class Processor(Iface, TProcessor):
     result = scanner_get_row_result()
     try:
       result.success = self._handler.scanner_get_row(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_get_row", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6768,7 +6768,7 @@ class Processor(Iface, TProcessor):
     result = next_row_result()
     try:
       result.success = self._handler.next_row(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("next_row", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6782,7 +6782,7 @@ class Processor(Iface, TProcessor):
     result = scanner_get_row_as_arrays_result()
     try:
       result.success = self._handler.scanner_get_row_as_arrays(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_get_row_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6796,7 +6796,7 @@ class Processor(Iface, TProcessor):
     result = next_row_as_arrays_result()
     try:
       result.success = self._handler.next_row_as_arrays(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("next_row_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6810,7 +6810,7 @@ class Processor(Iface, TProcessor):
     result = scanner_get_row_serialized_result()
     try:
       result.success = self._handler.scanner_get_row_serialized(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("scanner_get_row_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6824,7 +6824,7 @@ class Processor(Iface, TProcessor):
     result = next_row_serialized_result()
     try:
       result.success = self._handler.next_row_serialized(args.scanner)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("next_row_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6838,7 +6838,7 @@ class Processor(Iface, TProcessor):
     result = get_row_result()
     try:
       result.success = self._handler.get_row(args.ns, args.table_name, args.row)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_row", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6852,7 +6852,7 @@ class Processor(Iface, TProcessor):
     result = get_row_as_arrays_result()
     try:
       result.success = self._handler.get_row_as_arrays(args.ns, args.name, args.row)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_row_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6866,7 +6866,7 @@ class Processor(Iface, TProcessor):
     result = get_row_serialized_result()
     try:
       result.success = self._handler.get_row_serialized(args.ns, args.table_name, args.row)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_row_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6880,7 +6880,7 @@ class Processor(Iface, TProcessor):
     result = get_cell_result()
     try:
       result.success = self._handler.get_cell(args.ns, args.table_name, args.row, args.column)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_cell", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6894,7 +6894,7 @@ class Processor(Iface, TProcessor):
     result = get_cells_result()
     try:
       result.success = self._handler.get_cells(args.ns, args.table_name, args.scan_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6908,7 +6908,7 @@ class Processor(Iface, TProcessor):
     result = get_cells_as_arrays_result()
     try:
       result.success = self._handler.get_cells_as_arrays(args.ns, args.name, args.scan_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6922,7 +6922,7 @@ class Processor(Iface, TProcessor):
     result = get_cells_serialized_result()
     try:
       result.success = self._handler.get_cells_serialized(args.ns, args.name, args.scan_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_cells_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6936,7 +6936,7 @@ class Processor(Iface, TProcessor):
     result = shared_mutator_refresh_result()
     try:
       self._handler.shared_mutator_refresh(args.ns, args.table_name, args.mutate_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("shared_mutator_refresh", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6950,7 +6950,7 @@ class Processor(Iface, TProcessor):
     result = refresh_shared_mutator_result()
     try:
       self._handler.refresh_shared_mutator(args.ns, args.table_name, args.mutate_spec)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("refresh_shared_mutator", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6964,7 +6964,7 @@ class Processor(Iface, TProcessor):
     result = shared_mutator_set_cells_result()
     try:
       self._handler.shared_mutator_set_cells(args.ns, args.table_name, args.mutate_spec, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("shared_mutator_set_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6978,7 +6978,7 @@ class Processor(Iface, TProcessor):
     result = offer_cells_result()
     try:
       self._handler.offer_cells(args.ns, args.table_name, args.mutate_spec, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("offer_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -6992,7 +6992,7 @@ class Processor(Iface, TProcessor):
     result = shared_mutator_set_cells_as_arrays_result()
     try:
       self._handler.shared_mutator_set_cells_as_arrays(args.ns, args.table_name, args.mutate_spec, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("shared_mutator_set_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7006,7 +7006,7 @@ class Processor(Iface, TProcessor):
     result = offer_cells_as_arrays_result()
     try:
       self._handler.offer_cells_as_arrays(args.ns, args.table_name, args.mutate_spec, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("offer_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7020,7 +7020,7 @@ class Processor(Iface, TProcessor):
     result = shared_mutator_set_cell_result()
     try:
       self._handler.shared_mutator_set_cell(args.ns, args.table_name, args.mutate_spec, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("shared_mutator_set_cell", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7034,7 +7034,7 @@ class Processor(Iface, TProcessor):
     result = offer_cell_result()
     try:
       self._handler.offer_cell(args.ns, args.table_name, args.mutate_spec, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("offer_cell", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7048,7 +7048,7 @@ class Processor(Iface, TProcessor):
     result = shared_mutator_set_cell_as_array_result()
     try:
       self._handler.shared_mutator_set_cell_as_array(args.ns, args.table_name, args.mutate_spec, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("shared_mutator_set_cell_as_array", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7062,7 +7062,7 @@ class Processor(Iface, TProcessor):
     result = offer_cell_as_array_result()
     try:
       self._handler.offer_cell_as_array(args.ns, args.table_name, args.mutate_spec, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("offer_cell_as_array", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7076,7 +7076,7 @@ class Processor(Iface, TProcessor):
     result = mutator_open_result()
     try:
       result.success = self._handler.mutator_open(args.ns, args.table_name, args.flags, args.flush_interval)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_open", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7090,7 +7090,7 @@ class Processor(Iface, TProcessor):
     result = open_mutator_result()
     try:
       result.success = self._handler.open_mutator(args.ns, args.table_name, args.flags, args.flush_interval)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("open_mutator", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7104,7 +7104,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_open_result()
     try:
       result.success = self._handler.async_mutator_open(args.ns, args.table_name, args.future, args.flags)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_open", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7118,7 +7118,7 @@ class Processor(Iface, TProcessor):
     result = open_mutator_async_result()
     try:
       result.success = self._handler.open_mutator_async(args.ns, args.table_name, args.future, args.flags)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("open_mutator_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7132,7 +7132,7 @@ class Processor(Iface, TProcessor):
     result = mutator_close_result()
     try:
       self._handler.mutator_close(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_close", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7146,7 +7146,7 @@ class Processor(Iface, TProcessor):
     result = close_mutator_result()
     try:
       self._handler.close_mutator(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("close_mutator", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7160,7 +7160,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_cancel_result()
     try:
       self._handler.async_mutator_cancel(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_cancel", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7174,7 +7174,7 @@ class Processor(Iface, TProcessor):
     result = cancel_mutator_async_result()
     try:
       self._handler.cancel_mutator_async(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("cancel_mutator_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7188,7 +7188,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_close_result()
     try:
       self._handler.async_mutator_close(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_close", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7202,7 +7202,7 @@ class Processor(Iface, TProcessor):
     result = close_mutator_async_result()
     try:
       self._handler.close_mutator_async(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("close_mutator_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7216,7 +7216,7 @@ class Processor(Iface, TProcessor):
     result = mutator_set_cell_result()
     try:
       self._handler.mutator_set_cell(args.mutator, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_set_cell", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7230,7 +7230,7 @@ class Processor(Iface, TProcessor):
     result = set_cell_result()
     try:
       self._handler.set_cell(args.ns, args.table_name, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cell", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7244,7 +7244,7 @@ class Processor(Iface, TProcessor):
     result = mutator_set_cell_as_array_result()
     try:
       self._handler.mutator_set_cell_as_array(args.mutator, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_set_cell_as_array", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7258,7 +7258,7 @@ class Processor(Iface, TProcessor):
     result = set_cell_as_array_result()
     try:
       self._handler.set_cell_as_array(args.ns, args.table_name, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cell_as_array", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7272,7 +7272,7 @@ class Processor(Iface, TProcessor):
     result = mutator_set_cells_result()
     try:
       self._handler.mutator_set_cells(args.mutator, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_set_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7286,7 +7286,7 @@ class Processor(Iface, TProcessor):
     result = set_cells_result()
     try:
       self._handler.set_cells(args.ns, args.table_name, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7300,7 +7300,7 @@ class Processor(Iface, TProcessor):
     result = mutator_set_cells_as_arrays_result()
     try:
       self._handler.mutator_set_cells_as_arrays(args.mutator, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_set_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7314,7 +7314,7 @@ class Processor(Iface, TProcessor):
     result = set_cells_as_arrays_result()
     try:
       self._handler.set_cells_as_arrays(args.ns, args.table_name, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7328,7 +7328,7 @@ class Processor(Iface, TProcessor):
     result = mutator_set_cells_serialized_result()
     try:
       self._handler.mutator_set_cells_serialized(args.mutator, args.cells, args.flush)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_set_cells_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7342,7 +7342,7 @@ class Processor(Iface, TProcessor):
     result = set_cells_serialized_result()
     try:
       self._handler.set_cells_serialized(args.ns, args.table_name, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cells_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7356,7 +7356,7 @@ class Processor(Iface, TProcessor):
     result = mutator_flush_result()
     try:
       self._handler.mutator_flush(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("mutator_flush", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7370,7 +7370,7 @@ class Processor(Iface, TProcessor):
     result = flush_mutator_result()
     try:
       self._handler.flush_mutator(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("flush_mutator", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7384,7 +7384,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_set_cell_result()
     try:
       self._handler.async_mutator_set_cell(args.mutator, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_set_cell", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7398,7 +7398,7 @@ class Processor(Iface, TProcessor):
     result = set_cell_async_result()
     try:
       self._handler.set_cell_async(args.mutator, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cell_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7412,7 +7412,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_set_cell_as_array_result()
     try:
       self._handler.async_mutator_set_cell_as_array(args.mutator, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_set_cell_as_array", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7426,7 +7426,7 @@ class Processor(Iface, TProcessor):
     result = set_cell_as_array_async_result()
     try:
       self._handler.set_cell_as_array_async(args.mutator, args.cell)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cell_as_array_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7440,7 +7440,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_set_cells_result()
     try:
       self._handler.async_mutator_set_cells(args.mutator, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_set_cells", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7454,7 +7454,7 @@ class Processor(Iface, TProcessor):
     result = set_cells_async_result()
     try:
       self._handler.set_cells_async(args.mutator, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cells_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7468,7 +7468,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_set_cells_as_arrays_result()
     try:
       self._handler.async_mutator_set_cells_as_arrays(args.mutator, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_set_cells_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7482,7 +7482,7 @@ class Processor(Iface, TProcessor):
     result = set_cells_as_arrays_async_result()
     try:
       self._handler.set_cells_as_arrays_async(args.mutator, args.cells)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cells_as_arrays_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7496,7 +7496,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_set_cells_serialized_result()
     try:
       self._handler.async_mutator_set_cells_serialized(args.mutator, args.cells, args.flush)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_set_cells_serialized", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7510,7 +7510,7 @@ class Processor(Iface, TProcessor):
     result = set_cells_serialized_async_result()
     try:
       self._handler.set_cells_serialized_async(args.mutator, args.cells, args.flush)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("set_cells_serialized_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7524,7 +7524,7 @@ class Processor(Iface, TProcessor):
     result = async_mutator_flush_result()
     try:
       self._handler.async_mutator_flush(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("async_mutator_flush", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7538,7 +7538,7 @@ class Processor(Iface, TProcessor):
     result = flush_mutator_async_result()
     try:
       self._handler.flush_mutator_async(args.mutator)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("flush_mutator_async", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7552,7 +7552,7 @@ class Processor(Iface, TProcessor):
     result = namespace_exists_result()
     try:
       result.success = self._handler.namespace_exists(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("namespace_exists", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7566,7 +7566,7 @@ class Processor(Iface, TProcessor):
     result = exists_namespace_result()
     try:
       result.success = self._handler.exists_namespace(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("exists_namespace", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7580,7 +7580,7 @@ class Processor(Iface, TProcessor):
     result = exists_table_result()
     try:
       result.success = self._handler.exists_table(args.ns, args.name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("exists_table", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7594,7 +7594,7 @@ class Processor(Iface, TProcessor):
     result = table_exists_result()
     try:
       result.success = self._handler.table_exists(args.ns, args.name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_exists", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7608,7 +7608,7 @@ class Processor(Iface, TProcessor):
     result = table_get_id_result()
     try:
       result.success = self._handler.table_get_id(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_get_id", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7622,7 +7622,7 @@ class Processor(Iface, TProcessor):
     result = get_table_id_result()
     try:
       result.success = self._handler.get_table_id(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_table_id", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7636,7 +7636,7 @@ class Processor(Iface, TProcessor):
     result = table_get_schema_str_result()
     try:
       result.success = self._handler.table_get_schema_str(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_get_schema_str", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7650,7 +7650,7 @@ class Processor(Iface, TProcessor):
     result = get_schema_str_result()
     try:
       result.success = self._handler.get_schema_str(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_schema_str", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7664,7 +7664,7 @@ class Processor(Iface, TProcessor):
     result = table_get_schema_str_with_ids_result()
     try:
       result.success = self._handler.table_get_schema_str_with_ids(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_get_schema_str_with_ids", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7678,7 +7678,7 @@ class Processor(Iface, TProcessor):
     result = get_schema_str_with_ids_result()
     try:
       result.success = self._handler.get_schema_str_with_ids(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_schema_str_with_ids", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7692,7 +7692,7 @@ class Processor(Iface, TProcessor):
     result = table_get_schema_result()
     try:
       result.success = self._handler.table_get_schema(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_get_schema", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7706,7 +7706,7 @@ class Processor(Iface, TProcessor):
     result = get_schema_result()
     try:
       result.success = self._handler.get_schema(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_schema", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7720,7 +7720,7 @@ class Processor(Iface, TProcessor):
     result = get_tables_result()
     try:
       result.success = self._handler.get_tables(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_tables", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7734,7 +7734,7 @@ class Processor(Iface, TProcessor):
     result = namespace_get_listing_result()
     try:
       result.success = self._handler.namespace_get_listing(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("namespace_get_listing", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7748,7 +7748,7 @@ class Processor(Iface, TProcessor):
     result = get_listing_result()
     try:
       result.success = self._handler.get_listing(args.ns)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_listing", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7762,7 +7762,7 @@ class Processor(Iface, TProcessor):
     result = table_get_splits_result()
     try:
       result.success = self._handler.table_get_splits(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_get_splits", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7776,7 +7776,7 @@ class Processor(Iface, TProcessor):
     result = get_table_splits_result()
     try:
       result.success = self._handler.get_table_splits(args.ns, args.table_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("get_table_splits", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7790,7 +7790,7 @@ class Processor(Iface, TProcessor):
     result = namespace_drop_result()
     try:
       self._handler.namespace_drop(args.ns, args.if_exists)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("namespace_drop", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7804,7 +7804,7 @@ class Processor(Iface, TProcessor):
     result = drop_namespace_result()
     try:
       self._handler.drop_namespace(args.ns, args.if_exists)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("drop_namespace", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7818,7 +7818,7 @@ class Processor(Iface, TProcessor):
     result = rename_table_result()
     try:
       self._handler.rename_table(args.ns, args.name, args.new_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("rename_table", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7832,7 +7832,7 @@ class Processor(Iface, TProcessor):
     result = table_rename_result()
     try:
       self._handler.table_rename(args.ns, args.name, args.new_name)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_rename", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7846,7 +7846,7 @@ class Processor(Iface, TProcessor):
     result = drop_table_result()
     try:
       self._handler.drop_table(args.ns, args.name, args.if_exists)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("drop_table", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7860,7 +7860,7 @@ class Processor(Iface, TProcessor):
     result = table_drop_result()
     try:
       self._handler.table_drop(args.ns, args.name, args.if_exists)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("table_drop", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7885,7 +7885,7 @@ class Processor(Iface, TProcessor):
     result = create_cell_unique_result()
     try:
       result.success = self._handler.create_cell_unique(args.ns, args.table_name, args.key, args.value)
-    except ClientException, e:
+    except ClientException as e:
       result.e = e
     oprot.writeMessageBegin("create_cell_unique", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -7957,7 +7957,7 @@ class namespace_create_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8018,7 +8018,7 @@ class namespace_create_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8078,7 +8078,7 @@ class create_namespace_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8139,7 +8139,7 @@ class create_namespace_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8223,7 +8223,7 @@ class create_table_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8284,7 +8284,7 @@ class create_table_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8368,7 +8368,7 @@ class table_create_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8429,7 +8429,7 @@ class table_create_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8513,7 +8513,7 @@ class alter_table_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8574,7 +8574,7 @@ class alter_table_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8658,7 +8658,7 @@ class table_alter_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8719,7 +8719,7 @@ class table_alter_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8791,7 +8791,7 @@ class refresh_table_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8852,7 +8852,7 @@ class refresh_table_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8912,7 +8912,7 @@ class namespace_open_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -8984,7 +8984,7 @@ class namespace_open_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9044,7 +9044,7 @@ class open_namespace_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9116,7 +9116,7 @@ class open_namespace_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9176,7 +9176,7 @@ class namespace_close_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9237,7 +9237,7 @@ class namespace_close_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9297,7 +9297,7 @@ class close_namespace_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9358,7 +9358,7 @@ class close_namespace_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9418,7 +9418,7 @@ class future_open_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9490,7 +9490,7 @@ class future_open_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9550,7 +9550,7 @@ class open_future_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9622,7 +9622,7 @@ class open_future_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9682,7 +9682,7 @@ class future_cancel_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9743,7 +9743,7 @@ class future_cancel_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9803,7 +9803,7 @@ class cancel_future_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9864,7 +9864,7 @@ class cancel_future_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -9936,7 +9936,7 @@ class future_get_result_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10009,7 +10009,7 @@ class future_get_result_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10081,7 +10081,7 @@ class get_future_result_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10154,7 +10154,7 @@ class get_future_result_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10226,7 +10226,7 @@ class future_get_result_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10299,7 +10299,7 @@ class future_get_result_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10371,7 +10371,7 @@ class get_future_result_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10444,7 +10444,7 @@ class get_future_result_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10516,7 +10516,7 @@ class future_get_result_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10589,7 +10589,7 @@ class future_get_result_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10661,7 +10661,7 @@ class get_future_result_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10734,7 +10734,7 @@ class get_future_result_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10794,7 +10794,7 @@ class future_is_empty_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10866,7 +10866,7 @@ class future_is_empty_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10926,7 +10926,7 @@ class future_is_full_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -10998,7 +10998,7 @@ class future_is_full_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11058,7 +11058,7 @@ class future_is_cancelled_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11130,7 +11130,7 @@ class future_is_cancelled_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11190,7 +11190,7 @@ class future_has_outstanding_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11262,7 +11262,7 @@ class future_has_outstanding_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11322,7 +11322,7 @@ class future_close_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11383,7 +11383,7 @@ class future_close_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11443,7 +11443,7 @@ class close_future_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11504,7 +11504,7 @@ class close_future_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11589,7 +11589,7 @@ class scanner_open_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11661,7 +11661,7 @@ class scanner_open_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11746,7 +11746,7 @@ class open_scanner_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11818,7 +11818,7 @@ class open_scanner_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11915,7 +11915,7 @@ class async_scanner_open_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -11987,7 +11987,7 @@ class async_scanner_open_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12084,7 +12084,7 @@ class open_scanner_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12156,7 +12156,7 @@ class open_scanner_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12216,7 +12216,7 @@ class scanner_close_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12277,7 +12277,7 @@ class scanner_close_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12337,7 +12337,7 @@ class close_scanner_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12398,7 +12398,7 @@ class close_scanner_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12458,7 +12458,7 @@ class async_scanner_cancel_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12519,7 +12519,7 @@ class async_scanner_cancel_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12579,7 +12579,7 @@ class cancel_scanner_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12640,7 +12640,7 @@ class cancel_scanner_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12700,7 +12700,7 @@ class async_scanner_close_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12761,7 +12761,7 @@ class async_scanner_close_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12821,7 +12821,7 @@ class close_scanner_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12882,7 +12882,7 @@ class close_scanner_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12942,7 +12942,7 @@ class scanner_get_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -12980,7 +12980,7 @@ class scanner_get_cells_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype77, _size74) = iprot.readListBegin()
-          for _i78 in xrange(_size74):
+          for _i78 in range(_size74):
             _elem79 = Cell()
             _elem79.read(iprot)
             self.success.append(_elem79)
@@ -13023,7 +13023,7 @@ class scanner_get_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13083,7 +13083,7 @@ class next_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13121,7 +13121,7 @@ class next_cells_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype84, _size81) = iprot.readListBegin()
-          for _i85 in xrange(_size81):
+          for _i85 in range(_size81):
             _elem86 = Cell()
             _elem86.read(iprot)
             self.success.append(_elem86)
@@ -13164,7 +13164,7 @@ class next_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13224,7 +13224,7 @@ class scanner_get_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13262,10 +13262,10 @@ class scanner_get_cells_as_arrays_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype91, _size88) = iprot.readListBegin()
-          for _i92 in xrange(_size88):
+          for _i92 in range(_size88):
             _elem93 = []
             (_etype97, _size94) = iprot.readListBegin()
-            for _i98 in xrange(_size94):
+            for _i98 in range(_size94):
               _elem99 = iprot.readString();
               _elem93.append(_elem99)
             iprot.readListEnd()
@@ -13312,7 +13312,7 @@ class scanner_get_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13372,7 +13372,7 @@ class next_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13410,10 +13410,10 @@ class next_cells_as_arrays_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype105, _size102) = iprot.readListBegin()
-          for _i106 in xrange(_size102):
+          for _i106 in range(_size102):
             _elem107 = []
             (_etype111, _size108) = iprot.readListBegin()
-            for _i112 in xrange(_size108):
+            for _i112 in range(_size108):
               _elem113 = iprot.readString();
               _elem107.append(_elem113)
             iprot.readListEnd()
@@ -13460,7 +13460,7 @@ class next_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13520,7 +13520,7 @@ class scanner_get_cells_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13592,7 +13592,7 @@ class scanner_get_cells_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13652,7 +13652,7 @@ class next_cells_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13724,7 +13724,7 @@ class next_cells_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13784,7 +13784,7 @@ class scanner_get_row_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13822,7 +13822,7 @@ class scanner_get_row_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype119, _size116) = iprot.readListBegin()
-          for _i120 in xrange(_size116):
+          for _i120 in range(_size116):
             _elem121 = Cell()
             _elem121.read(iprot)
             self.success.append(_elem121)
@@ -13865,7 +13865,7 @@ class scanner_get_row_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13925,7 +13925,7 @@ class next_row_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -13963,7 +13963,7 @@ class next_row_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype126, _size123) = iprot.readListBegin()
-          for _i127 in xrange(_size123):
+          for _i127 in range(_size123):
             _elem128 = Cell()
             _elem128.read(iprot)
             self.success.append(_elem128)
@@ -14006,7 +14006,7 @@ class next_row_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14066,7 +14066,7 @@ class scanner_get_row_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14104,10 +14104,10 @@ class scanner_get_row_as_arrays_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype133, _size130) = iprot.readListBegin()
-          for _i134 in xrange(_size130):
+          for _i134 in range(_size130):
             _elem135 = []
             (_etype139, _size136) = iprot.readListBegin()
-            for _i140 in xrange(_size136):
+            for _i140 in range(_size136):
               _elem141 = iprot.readString();
               _elem135.append(_elem141)
             iprot.readListEnd()
@@ -14154,7 +14154,7 @@ class scanner_get_row_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14214,7 +14214,7 @@ class next_row_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14252,10 +14252,10 @@ class next_row_as_arrays_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype147, _size144) = iprot.readListBegin()
-          for _i148 in xrange(_size144):
+          for _i148 in range(_size144):
             _elem149 = []
             (_etype153, _size150) = iprot.readListBegin()
-            for _i154 in xrange(_size150):
+            for _i154 in range(_size150):
               _elem155 = iprot.readString();
               _elem149.append(_elem155)
             iprot.readListEnd()
@@ -14302,7 +14302,7 @@ class next_row_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14362,7 +14362,7 @@ class scanner_get_row_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14434,7 +14434,7 @@ class scanner_get_row_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14494,7 +14494,7 @@ class next_row_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14566,7 +14566,7 @@ class next_row_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14650,7 +14650,7 @@ class get_row_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14688,7 +14688,7 @@ class get_row_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype161, _size158) = iprot.readListBegin()
-          for _i162 in xrange(_size158):
+          for _i162 in range(_size158):
             _elem163 = Cell()
             _elem163.read(iprot)
             self.success.append(_elem163)
@@ -14731,7 +14731,7 @@ class get_row_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14815,7 +14815,7 @@ class get_row_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14853,10 +14853,10 @@ class get_row_as_arrays_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype168, _size165) = iprot.readListBegin()
-          for _i169 in xrange(_size165):
+          for _i169 in range(_size165):
             _elem170 = []
             (_etype174, _size171) = iprot.readListBegin()
-            for _i175 in xrange(_size171):
+            for _i175 in range(_size171):
               _elem176 = iprot.readString();
               _elem170.append(_elem176)
             iprot.readListEnd()
@@ -14903,7 +14903,7 @@ class get_row_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -14987,7 +14987,7 @@ class get_row_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15059,7 +15059,7 @@ class get_row_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15155,7 +15155,7 @@ class get_cell_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15227,7 +15227,7 @@ class get_cell_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15312,7 +15312,7 @@ class get_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15350,7 +15350,7 @@ class get_cells_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype182, _size179) = iprot.readListBegin()
-          for _i183 in xrange(_size179):
+          for _i183 in range(_size179):
             _elem184 = Cell()
             _elem184.read(iprot)
             self.success.append(_elem184)
@@ -15393,7 +15393,7 @@ class get_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15478,7 +15478,7 @@ class get_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15516,10 +15516,10 @@ class get_cells_as_arrays_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype189, _size186) = iprot.readListBegin()
-          for _i190 in xrange(_size186):
+          for _i190 in range(_size186):
             _elem191 = []
             (_etype195, _size192) = iprot.readListBegin()
-            for _i196 in xrange(_size192):
+            for _i196 in range(_size192):
               _elem197 = iprot.readString();
               _elem191.append(_elem197)
             iprot.readListEnd()
@@ -15566,7 +15566,7 @@ class get_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15651,7 +15651,7 @@ class get_cells_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15723,7 +15723,7 @@ class get_cells_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15808,7 +15808,7 @@ class shared_mutator_refresh_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15869,7 +15869,7 @@ class shared_mutator_refresh_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -15954,7 +15954,7 @@ class refresh_shared_mutator_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16015,7 +16015,7 @@ class refresh_shared_mutator_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16076,7 +16076,7 @@ class shared_mutator_set_cells_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype203, _size200) = iprot.readListBegin()
-          for _i204 in xrange(_size200):
+          for _i204 in range(_size200):
             _elem205 = Cell()
             _elem205.read(iprot)
             self.cells.append(_elem205)
@@ -16121,7 +16121,7 @@ class shared_mutator_set_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16182,7 +16182,7 @@ class shared_mutator_set_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16243,7 +16243,7 @@ class offer_cells_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype210, _size207) = iprot.readListBegin()
-          for _i211 in xrange(_size207):
+          for _i211 in range(_size207):
             _elem212 = Cell()
             _elem212.read(iprot)
             self.cells.append(_elem212)
@@ -16288,7 +16288,7 @@ class offer_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16349,7 +16349,7 @@ class offer_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16410,10 +16410,10 @@ class shared_mutator_set_cells_as_arrays_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype217, _size214) = iprot.readListBegin()
-          for _i218 in xrange(_size214):
+          for _i218 in range(_size214):
             _elem219 = []
             (_etype223, _size220) = iprot.readListBegin()
-            for _i224 in xrange(_size220):
+            for _i224 in range(_size220):
               _elem225 = iprot.readString();
               _elem219.append(_elem225)
             iprot.readListEnd()
@@ -16462,7 +16462,7 @@ class shared_mutator_set_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16523,7 +16523,7 @@ class shared_mutator_set_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16584,10 +16584,10 @@ class offer_cells_as_arrays_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype231, _size228) = iprot.readListBegin()
-          for _i232 in xrange(_size228):
+          for _i232 in range(_size228):
             _elem233 = []
             (_etype237, _size234) = iprot.readListBegin()
-            for _i238 in xrange(_size234):
+            for _i238 in range(_size234):
               _elem239 = iprot.readString();
               _elem233.append(_elem239)
             iprot.readListEnd()
@@ -16636,7 +16636,7 @@ class offer_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16697,7 +16697,7 @@ class offer_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16795,7 +16795,7 @@ class shared_mutator_set_cell_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16856,7 +16856,7 @@ class shared_mutator_set_cell_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -16954,7 +16954,7 @@ class offer_cell_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17015,7 +17015,7 @@ class offer_cell_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17076,7 +17076,7 @@ class shared_mutator_set_cell_as_array_args(object):
         if ftype == TType.LIST:
           self.cell = []
           (_etype245, _size242) = iprot.readListBegin()
-          for _i246 in xrange(_size242):
+          for _i246 in range(_size242):
             _elem247 = iprot.readString();
             self.cell.append(_elem247)
           iprot.readListEnd()
@@ -17120,7 +17120,7 @@ class shared_mutator_set_cell_as_array_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17181,7 +17181,7 @@ class shared_mutator_set_cell_as_array_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17242,7 +17242,7 @@ class offer_cell_as_array_args(object):
         if ftype == TType.LIST:
           self.cell = []
           (_etype252, _size249) = iprot.readListBegin()
-          for _i253 in xrange(_size249):
+          for _i253 in range(_size249):
             _elem254 = iprot.readString();
             self.cell.append(_elem254)
           iprot.readListEnd()
@@ -17286,7 +17286,7 @@ class offer_cell_as_array_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17347,7 +17347,7 @@ class offer_cell_as_array_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17443,7 +17443,7 @@ class mutator_open_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17515,7 +17515,7 @@ class mutator_open_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17611,7 +17611,7 @@ class open_mutator_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17683,7 +17683,7 @@ class open_mutator_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17779,7 +17779,7 @@ class async_mutator_open_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17851,7 +17851,7 @@ class async_mutator_open_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -17947,7 +17947,7 @@ class open_mutator_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18019,7 +18019,7 @@ class open_mutator_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18079,7 +18079,7 @@ class mutator_close_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18140,7 +18140,7 @@ class mutator_close_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18200,7 +18200,7 @@ class close_mutator_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18261,7 +18261,7 @@ class close_mutator_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18321,7 +18321,7 @@ class async_mutator_cancel_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18382,7 +18382,7 @@ class async_mutator_cancel_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18442,7 +18442,7 @@ class cancel_mutator_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18503,7 +18503,7 @@ class cancel_mutator_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18563,7 +18563,7 @@ class async_mutator_close_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18624,7 +18624,7 @@ class async_mutator_close_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18684,7 +18684,7 @@ class close_mutator_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18745,7 +18745,7 @@ class close_mutator_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18818,7 +18818,7 @@ class mutator_set_cell_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18879,7 +18879,7 @@ class mutator_set_cell_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -18964,7 +18964,7 @@ class set_cell_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19025,7 +19025,7 @@ class set_cell_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19069,7 +19069,7 @@ class mutator_set_cell_as_array_args(object):
         if ftype == TType.LIST:
           self.cell = []
           (_etype259, _size256) = iprot.readListBegin()
-          for _i260 in xrange(_size256):
+          for _i260 in range(_size256):
             _elem261 = iprot.readString();
             self.cell.append(_elem261)
           iprot.readListEnd()
@@ -19105,7 +19105,7 @@ class mutator_set_cell_as_array_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19166,7 +19166,7 @@ class mutator_set_cell_as_array_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19218,7 +19218,7 @@ class set_cell_as_array_args(object):
         if ftype == TType.LIST:
           self.cell = []
           (_etype266, _size263) = iprot.readListBegin()
-          for _i267 in xrange(_size263):
+          for _i267 in range(_size263):
             _elem268 = iprot.readString();
             self.cell.append(_elem268)
           iprot.readListEnd()
@@ -19258,7 +19258,7 @@ class set_cell_as_array_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19319,7 +19319,7 @@ class set_cell_as_array_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19363,7 +19363,7 @@ class mutator_set_cells_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype273, _size270) = iprot.readListBegin()
-          for _i274 in xrange(_size270):
+          for _i274 in range(_size270):
             _elem275 = Cell()
             _elem275.read(iprot)
             self.cells.append(_elem275)
@@ -19400,7 +19400,7 @@ class mutator_set_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19461,7 +19461,7 @@ class mutator_set_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19513,7 +19513,7 @@ class set_cells_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype280, _size277) = iprot.readListBegin()
-          for _i281 in xrange(_size277):
+          for _i281 in range(_size277):
             _elem282 = Cell()
             _elem282.read(iprot)
             self.cells.append(_elem282)
@@ -19554,7 +19554,7 @@ class set_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19615,7 +19615,7 @@ class set_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19659,10 +19659,10 @@ class mutator_set_cells_as_arrays_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype287, _size284) = iprot.readListBegin()
-          for _i288 in xrange(_size284):
+          for _i288 in range(_size284):
             _elem289 = []
             (_etype293, _size290) = iprot.readListBegin()
-            for _i294 in xrange(_size290):
+            for _i294 in range(_size290):
               _elem295 = iprot.readString();
               _elem289.append(_elem295)
             iprot.readListEnd()
@@ -19703,7 +19703,7 @@ class mutator_set_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19764,7 +19764,7 @@ class mutator_set_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19816,10 +19816,10 @@ class set_cells_as_arrays_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype301, _size298) = iprot.readListBegin()
-          for _i302 in xrange(_size298):
+          for _i302 in range(_size298):
             _elem303 = []
             (_etype307, _size304) = iprot.readListBegin()
-            for _i308 in xrange(_size304):
+            for _i308 in range(_size304):
               _elem309 = iprot.readString();
               _elem303.append(_elem309)
             iprot.readListEnd()
@@ -19864,7 +19864,7 @@ class set_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -19925,7 +19925,7 @@ class set_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20009,7 +20009,7 @@ class mutator_set_cells_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20070,7 +20070,7 @@ class mutator_set_cells_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20154,7 +20154,7 @@ class set_cells_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20215,7 +20215,7 @@ class set_cells_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20275,7 +20275,7 @@ class mutator_flush_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20336,7 +20336,7 @@ class mutator_flush_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20396,7 +20396,7 @@ class flush_mutator_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20457,7 +20457,7 @@ class flush_mutator_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20530,7 +20530,7 @@ class async_mutator_set_cell_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20591,7 +20591,7 @@ class async_mutator_set_cell_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20664,7 +20664,7 @@ class set_cell_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20725,7 +20725,7 @@ class set_cell_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20769,7 +20769,7 @@ class async_mutator_set_cell_as_array_args(object):
         if ftype == TType.LIST:
           self.cell = []
           (_etype315, _size312) = iprot.readListBegin()
-          for _i316 in xrange(_size312):
+          for _i316 in range(_size312):
             _elem317 = iprot.readString();
             self.cell.append(_elem317)
           iprot.readListEnd()
@@ -20805,7 +20805,7 @@ class async_mutator_set_cell_as_array_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20866,7 +20866,7 @@ class async_mutator_set_cell_as_array_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -20910,7 +20910,7 @@ class set_cell_as_array_async_args(object):
         if ftype == TType.LIST:
           self.cell = []
           (_etype322, _size319) = iprot.readListBegin()
-          for _i323 in xrange(_size319):
+          for _i323 in range(_size319):
             _elem324 = iprot.readString();
             self.cell.append(_elem324)
           iprot.readListEnd()
@@ -20946,7 +20946,7 @@ class set_cell_as_array_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21007,7 +21007,7 @@ class set_cell_as_array_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21051,7 +21051,7 @@ class async_mutator_set_cells_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype329, _size326) = iprot.readListBegin()
-          for _i330 in xrange(_size326):
+          for _i330 in range(_size326):
             _elem331 = Cell()
             _elem331.read(iprot)
             self.cells.append(_elem331)
@@ -21088,7 +21088,7 @@ class async_mutator_set_cells_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21149,7 +21149,7 @@ class async_mutator_set_cells_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21193,7 +21193,7 @@ class set_cells_async_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype336, _size333) = iprot.readListBegin()
-          for _i337 in xrange(_size333):
+          for _i337 in range(_size333):
             _elem338 = Cell()
             _elem338.read(iprot)
             self.cells.append(_elem338)
@@ -21230,7 +21230,7 @@ class set_cells_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21291,7 +21291,7 @@ class set_cells_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21335,10 +21335,10 @@ class async_mutator_set_cells_as_arrays_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype343, _size340) = iprot.readListBegin()
-          for _i344 in xrange(_size340):
+          for _i344 in range(_size340):
             _elem345 = []
             (_etype349, _size346) = iprot.readListBegin()
-            for _i350 in xrange(_size346):
+            for _i350 in range(_size346):
               _elem351 = iprot.readString();
               _elem345.append(_elem351)
             iprot.readListEnd()
@@ -21379,7 +21379,7 @@ class async_mutator_set_cells_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21440,7 +21440,7 @@ class async_mutator_set_cells_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21484,10 +21484,10 @@ class set_cells_as_arrays_async_args(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype357, _size354) = iprot.readListBegin()
-          for _i358 in xrange(_size354):
+          for _i358 in range(_size354):
             _elem359 = []
             (_etype363, _size360) = iprot.readListBegin()
-            for _i364 in xrange(_size360):
+            for _i364 in range(_size360):
               _elem365 = iprot.readString();
               _elem359.append(_elem365)
             iprot.readListEnd()
@@ -21528,7 +21528,7 @@ class set_cells_as_arrays_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21589,7 +21589,7 @@ class set_cells_as_arrays_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21673,7 +21673,7 @@ class async_mutator_set_cells_serialized_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21734,7 +21734,7 @@ class async_mutator_set_cells_serialized_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21818,7 +21818,7 @@ class set_cells_serialized_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21879,7 +21879,7 @@ class set_cells_serialized_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -21939,7 +21939,7 @@ class async_mutator_flush_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22000,7 +22000,7 @@ class async_mutator_flush_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22060,7 +22060,7 @@ class flush_mutator_async_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22121,7 +22121,7 @@ class flush_mutator_async_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22181,7 +22181,7 @@ class namespace_exists_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22253,7 +22253,7 @@ class namespace_exists_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22313,7 +22313,7 @@ class exists_namespace_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22385,7 +22385,7 @@ class exists_namespace_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22457,7 +22457,7 @@ class exists_table_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22529,7 +22529,7 @@ class exists_table_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22601,7 +22601,7 @@ class table_exists_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22673,7 +22673,7 @@ class table_exists_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22745,7 +22745,7 @@ class table_get_id_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22817,7 +22817,7 @@ class table_get_id_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22889,7 +22889,7 @@ class get_table_id_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -22961,7 +22961,7 @@ class get_table_id_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23033,7 +23033,7 @@ class table_get_schema_str_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23105,7 +23105,7 @@ class table_get_schema_str_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23177,7 +23177,7 @@ class get_schema_str_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23249,7 +23249,7 @@ class get_schema_str_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23321,7 +23321,7 @@ class table_get_schema_str_with_ids_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23393,7 +23393,7 @@ class table_get_schema_str_with_ids_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23465,7 +23465,7 @@ class get_schema_str_with_ids_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23537,7 +23537,7 @@ class get_schema_str_with_ids_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23609,7 +23609,7 @@ class table_get_schema_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23682,7 +23682,7 @@ class table_get_schema_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23754,7 +23754,7 @@ class get_schema_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23827,7 +23827,7 @@ class get_schema_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23887,7 +23887,7 @@ class get_tables_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -23925,7 +23925,7 @@ class get_tables_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype371, _size368) = iprot.readListBegin()
-          for _i372 in xrange(_size368):
+          for _i372 in range(_size368):
             _elem373 = iprot.readString();
             self.success.append(_elem373)
           iprot.readListEnd()
@@ -23967,7 +23967,7 @@ class get_tables_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24027,7 +24027,7 @@ class namespace_get_listing_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24065,7 +24065,7 @@ class namespace_get_listing_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype378, _size375) = iprot.readListBegin()
-          for _i379 in xrange(_size375):
+          for _i379 in range(_size375):
             _elem380 = NamespaceListing()
             _elem380.read(iprot)
             self.success.append(_elem380)
@@ -24108,7 +24108,7 @@ class namespace_get_listing_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24168,7 +24168,7 @@ class get_listing_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24206,7 +24206,7 @@ class get_listing_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype385, _size382) = iprot.readListBegin()
-          for _i386 in xrange(_size382):
+          for _i386 in range(_size382):
             _elem387 = NamespaceListing()
             _elem387.read(iprot)
             self.success.append(_elem387)
@@ -24249,7 +24249,7 @@ class get_listing_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24321,7 +24321,7 @@ class table_get_splits_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24359,7 +24359,7 @@ class table_get_splits_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype392, _size389) = iprot.readListBegin()
-          for _i393 in xrange(_size389):
+          for _i393 in range(_size389):
             _elem394 = TableSplit()
             _elem394.read(iprot)
             self.success.append(_elem394)
@@ -24402,7 +24402,7 @@ class table_get_splits_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24474,7 +24474,7 @@ class get_table_splits_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24512,7 +24512,7 @@ class get_table_splits_result(object):
         if ftype == TType.LIST:
           self.success = []
           (_etype399, _size396) = iprot.readListBegin()
-          for _i400 in xrange(_size396):
+          for _i400 in range(_size396):
             _elem401 = TableSplit()
             _elem401.read(iprot)
             self.success.append(_elem401)
@@ -24555,7 +24555,7 @@ class get_table_splits_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24627,7 +24627,7 @@ class namespace_drop_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24688,7 +24688,7 @@ class namespace_drop_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24760,7 +24760,7 @@ class drop_namespace_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24821,7 +24821,7 @@ class drop_namespace_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24905,7 +24905,7 @@ class rename_table_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -24966,7 +24966,7 @@ class rename_table_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25050,7 +25050,7 @@ class table_rename_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25111,7 +25111,7 @@ class table_rename_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25195,7 +25195,7 @@ class drop_table_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25256,7 +25256,7 @@ class drop_table_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25340,7 +25340,7 @@ class table_drop_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25401,7 +25401,7 @@ class table_drop_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25443,7 +25443,7 @@ class generate_guid_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25502,7 +25502,7 @@ class generate_guid_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25599,7 +25599,7 @@ class create_cell_unique_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25671,7 +25671,7 @@ class create_cell_unique_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25731,7 +25731,7 @@ class error_get_text_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -25790,7 +25790,7 @@ class error_get_text_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

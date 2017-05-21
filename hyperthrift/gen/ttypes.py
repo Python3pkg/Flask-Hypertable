@@ -201,7 +201,7 @@ class RowInterval(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -345,7 +345,7 @@ class CellInterval(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -448,7 +448,7 @@ class ColumnPredicate(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -587,7 +587,7 @@ class ScanSpec(object):
         if ftype == TType.LIST:
           self.row_intervals = []
           (_etype3, _size0) = iprot.readListBegin()
-          for _i4 in xrange(_size0):
+          for _i4 in range(_size0):
             _elem5 = RowInterval()
             _elem5.read(iprot)
             self.row_intervals.append(_elem5)
@@ -598,7 +598,7 @@ class ScanSpec(object):
         if ftype == TType.LIST:
           self.cell_intervals = []
           (_etype9, _size6) = iprot.readListBegin()
-          for _i10 in xrange(_size6):
+          for _i10 in range(_size6):
             _elem11 = CellInterval()
             _elem11.read(iprot)
             self.cell_intervals.append(_elem11)
@@ -634,7 +634,7 @@ class ScanSpec(object):
         if ftype == TType.LIST:
           self.columns = []
           (_etype15, _size12) = iprot.readListBegin()
-          for _i16 in xrange(_size12):
+          for _i16 in range(_size12):
             _elem17 = iprot.readString();
             self.columns.append(_elem17)
           iprot.readListEnd()
@@ -684,7 +684,7 @@ class ScanSpec(object):
         if ftype == TType.LIST:
           self.column_predicates = []
           (_etype21, _size18) = iprot.readListBegin()
-          for _i22 in xrange(_size18):
+          for _i22 in range(_size18):
             _elem23 = ColumnPredicate()
             _elem23.read(iprot)
             self.column_predicates.append(_elem23)
@@ -799,7 +799,7 @@ class ScanSpec(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -943,7 +943,7 @@ class Key(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1046,7 +1046,7 @@ class MutateSpec(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1129,7 +1129,7 @@ class Cell(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1239,7 +1239,7 @@ class Result(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype31, _size28) = iprot.readListBegin()
-          for _i32 in xrange(_size28):
+          for _i32 in range(_size28):
             _elem33 = Cell()
             _elem33.read(iprot)
             self.cells.append(_elem33)
@@ -1304,7 +1304,7 @@ class Result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1414,10 +1414,10 @@ class ResultAsArrays(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype38, _size35) = iprot.readListBegin()
-          for _i39 in xrange(_size35):
+          for _i39 in range(_size35):
             _elem40 = []
             (_etype44, _size41) = iprot.readListBegin()
-            for _i45 in xrange(_size41):
+            for _i45 in range(_size41):
               _elem46 = iprot.readString();
               _elem40.append(_elem46)
             iprot.readListEnd()
@@ -1486,7 +1486,7 @@ class ResultAsArrays(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1652,7 +1652,7 @@ class ResultSerialized(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1738,7 +1738,7 @@ class NamespaceListing(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1865,7 +1865,7 @@ class TableSplit(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1976,7 +1976,7 @@ class ColumnFamily(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2084,7 +2084,7 @@ class AccessGroup(object):
         if ftype == TType.LIST:
           self.columns = []
           (_etype52, _size49) = iprot.readListBegin()
-          for _i53 in xrange(_size49):
+          for _i53 in range(_size49):
             _elem54 = ColumnFamily()
             _elem54.read(iprot)
             self.columns.append(_elem54)
@@ -2141,7 +2141,7 @@ class AccessGroup(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2204,7 +2204,7 @@ class Schema(object):
         if ftype == TType.MAP:
           self.access_groups = {}
           (_ktype57, _vtype58, _size56 ) = iprot.readMapBegin() 
-          for _i60 in xrange(_size56):
+          for _i60 in range(_size56):
             _key61 = iprot.readString();
             _val62 = AccessGroup()
             _val62.read(iprot)
@@ -2216,7 +2216,7 @@ class Schema(object):
         if ftype == TType.MAP:
           self.column_families = {}
           (_ktype64, _vtype65, _size63 ) = iprot.readMapBegin() 
-          for _i67 in xrange(_size63):
+          for _i67 in range(_size63):
             _key68 = iprot.readString();
             _val69 = ColumnFamily()
             _val69.read(iprot)
@@ -2237,7 +2237,7 @@ class Schema(object):
     if self.access_groups is not None:
       oprot.writeFieldBegin('access_groups', TType.MAP, 1)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.access_groups))
-      for kiter70,viter71 in self.access_groups.items():
+      for kiter70,viter71 in list(self.access_groups.items()):
         oprot.writeString(kiter70)
         viter71.write(oprot)
       oprot.writeMapEnd()
@@ -2245,7 +2245,7 @@ class Schema(object):
     if self.column_families is not None:
       oprot.writeFieldBegin('column_families', TType.MAP, 2)
       oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.column_families))
-      for kiter72,viter73 in self.column_families.items():
+      for kiter72,viter73 in list(self.column_families.items()):
         oprot.writeString(kiter72)
         viter73.write(oprot)
       oprot.writeMapEnd()
@@ -2259,7 +2259,7 @@ class Schema(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -2344,7 +2344,7 @@ class ClientException(TException):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

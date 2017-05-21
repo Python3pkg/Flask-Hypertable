@@ -8,7 +8,7 @@
 
 from thrift.Thrift import TType, TMessageType, TException
 import hyperthrift.gen.ClientService
-from ttypes import *
+from .ttypes import *
 from thrift.Thrift import TProcessor
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol, TProtocol
@@ -381,7 +381,7 @@ class Processor(hyperthrift.gen.ClientService.Processor, Iface, TProcessor):
     result = hql_exec_result()
     try:
       result.success = self._handler.hql_exec(args.ns, args.command, args.noflush, args.unbuffered)
-    except hyperthrift.gen.ttypes.ClientException, e:
+    except hyperthrift.gen.ttypes.ClientException as e:
       result.e = e
     oprot.writeMessageBegin("hql_exec", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -395,7 +395,7 @@ class Processor(hyperthrift.gen.ClientService.Processor, Iface, TProcessor):
     result = hql_query_result()
     try:
       result.success = self._handler.hql_query(args.ns, args.command)
-    except hyperthrift.gen.ttypes.ClientException, e:
+    except hyperthrift.gen.ttypes.ClientException as e:
       result.e = e
     oprot.writeMessageBegin("hql_query", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -409,7 +409,7 @@ class Processor(hyperthrift.gen.ClientService.Processor, Iface, TProcessor):
     result = hql_exec_as_arrays_result()
     try:
       result.success = self._handler.hql_exec_as_arrays(args.ns, args.command, args.noflush, args.unbuffered)
-    except hyperthrift.gen.ttypes.ClientException, e:
+    except hyperthrift.gen.ttypes.ClientException as e:
       result.e = e
     oprot.writeMessageBegin("hql_exec_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -423,7 +423,7 @@ class Processor(hyperthrift.gen.ClientService.Processor, Iface, TProcessor):
     result = hql_exec2_result()
     try:
       result.success = self._handler.hql_exec2(args.ns, args.command, args.noflush, args.unbuffered)
-    except hyperthrift.gen.ttypes.ClientException, e:
+    except hyperthrift.gen.ttypes.ClientException as e:
       result.e = e
     oprot.writeMessageBegin("hql_exec2", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -437,7 +437,7 @@ class Processor(hyperthrift.gen.ClientService.Processor, Iface, TProcessor):
     result = hql_query_as_arrays_result()
     try:
       result.success = self._handler.hql_query_as_arrays(args.ns, args.command)
-    except hyperthrift.gen.ttypes.ClientException, e:
+    except hyperthrift.gen.ttypes.ClientException as e:
       result.e = e
     oprot.writeMessageBegin("hql_query_as_arrays", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -451,7 +451,7 @@ class Processor(hyperthrift.gen.ClientService.Processor, Iface, TProcessor):
     result = hql_query2_result()
     try:
       result.success = self._handler.hql_query2(args.ns, args.command)
-    except hyperthrift.gen.ttypes.ClientException, e:
+    except hyperthrift.gen.ttypes.ClientException as e:
       result.e = e
     oprot.writeMessageBegin("hql_query2", TMessageType.REPLY, seqid)
     result.write(oprot)
@@ -548,7 +548,7 @@ class hql_exec_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -621,7 +621,7 @@ class hql_exec_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -693,7 +693,7 @@ class hql_query_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -766,7 +766,7 @@ class hql_query_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -862,7 +862,7 @@ class hql_exec_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -935,7 +935,7 @@ class hql_exec_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1031,7 +1031,7 @@ class hql_exec2_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1104,7 +1104,7 @@ class hql_exec2_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1176,7 +1176,7 @@ class hql_query_as_arrays_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1249,7 +1249,7 @@ class hql_query_as_arrays_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1321,7 +1321,7 @@ class hql_query2_args(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -1394,7 +1394,7 @@ class hql_query2_result(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

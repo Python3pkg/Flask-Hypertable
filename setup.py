@@ -26,8 +26,8 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 if sys.argv[-1] == 'info':
-    for k, v in p.items():
-        print('%s: %s' % (k, v))
+    for k, v in list(p.items()):
+        print(('%s: %s' % (k, v)))
     sys.exit()
 
 readme = open('README.rst').read()

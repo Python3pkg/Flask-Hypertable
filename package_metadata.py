@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, division, print_function, \
-    with_statement, unicode_literals
+
 
 import os
 import sys
@@ -55,7 +54,7 @@ p = Package_Metadata(_package_file)
 
 
 def print_metadata():
-    for k, v in p.items():
+    for k, v in list(p.items()):
         print('%s: %s' % (k, v))
 
 if __name__ == '__main__':

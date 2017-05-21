@@ -6,31 +6,31 @@ _identity = lambda x: x
 
 
 if PY2:
-    unichr = unichr
-    text_type = unicode
-    string_types = (str, unicode)
-    integer_types = (int, long)
-    from urllib import urlretrieve
+    chr = chr
+    text_type = str
+    string_types = (str, str)
+    integer_types = (int, int)
+    from urllib.request import urlretrieve
 
     text_to_native = lambda s, enc: s.encode(enc)
 
-    iterkeys = lambda d: d.iterkeys()
-    itervalues = lambda d: d.itervalues()
-    iteritems = lambda d: d.iteritems()
+    iterkeys = lambda d: iter(d.keys())
+    itervalues = lambda d: iter(d.values())
+    iteritems = lambda d: iter(d.items())
 
-    from cStringIO import StringIO as BytesIO
-    from StringIO import StringIO
-    import cPickle as pickle
-    import ConfigParser as configparser
+    from io import StringIO as BytesIO
+    from io import StringIO
+    import pickle as pickle
+    import configparser as configparser
 
-    from itertools import izip, imap
+    
     range_type = xrange
 
     cmp = cmp
 
     input = raw_input
     from string import lower as ascii_lowercase
-    import urlparse
+    import urllib.parse
 
     def console_to_str(s):
         return s.decode('utf_8')
@@ -38,16 +38,16 @@ if PY2:
     exec('def reraise(tp, value, tb=None):\n raise tp, value, tb')
 
 else:
-    unichr = chr
+    chr = chr
     text_type = str
     string_types = (str,)
     integer_types = (int, )
 
     text_to_native = lambda s, enc: s
 
-    iterkeys = lambda d: iter(d.keys())
-    itervalues = lambda d: iter(d.values())
-    iteritems = lambda d: iter(d.items())
+    iterkeys = lambda d: iter(list(d.keys()))
+    itervalues = lambda d: iter(list(d.values()))
+    iteritems = lambda d: iter(list(d.items()))
 
     from io import StringIO, BytesIO
     import pickle
@@ -76,7 +76,7 @@ else:
 
     def reraise(tp, value, tb=None):
         if value.__traceback__ is not tb:
-            raise(value.with_traceback(tb))
+            raise value
         raise value
 
 

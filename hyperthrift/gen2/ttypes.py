@@ -71,7 +71,7 @@ class HqlResult(object):
         if ftype == TType.LIST:
           self.results = []
           (_etype3, _size0) = iprot.readListBegin()
-          for _i4 in xrange(_size0):
+          for _i4 in range(_size0):
             _elem5 = iprot.readString();
             self.results.append(_elem5)
           iprot.readListEnd()
@@ -81,7 +81,7 @@ class HqlResult(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype9, _size6) = iprot.readListBegin()
-          for _i10 in xrange(_size6):
+          for _i10 in range(_size6):
             _elem11 = hyperthrift.gen.ttypes.Cell()
             _elem11.read(iprot)
             self.cells.append(_elem11)
@@ -139,7 +139,7 @@ class HqlResult(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -186,7 +186,7 @@ class HqlResult2(object):
         if ftype == TType.LIST:
           self.results = []
           (_etype17, _size14) = iprot.readListBegin()
-          for _i18 in xrange(_size14):
+          for _i18 in range(_size14):
             _elem19 = iprot.readString();
             self.results.append(_elem19)
           iprot.readListEnd()
@@ -196,10 +196,10 @@ class HqlResult2(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype23, _size20) = iprot.readListBegin()
-          for _i24 in xrange(_size20):
+          for _i24 in range(_size20):
             _elem25 = []
             (_etype29, _size26) = iprot.readListBegin()
-            for _i30 in xrange(_size26):
+            for _i30 in range(_size26):
               _elem31 = iprot.readString();
               _elem25.append(_elem31)
             iprot.readListEnd()
@@ -261,7 +261,7 @@ class HqlResult2(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):
@@ -308,7 +308,7 @@ class HqlResultAsArrays(object):
         if ftype == TType.LIST:
           self.results = []
           (_etype38, _size35) = iprot.readListBegin()
-          for _i39 in xrange(_size35):
+          for _i39 in range(_size35):
             _elem40 = iprot.readString();
             self.results.append(_elem40)
           iprot.readListEnd()
@@ -318,10 +318,10 @@ class HqlResultAsArrays(object):
         if ftype == TType.LIST:
           self.cells = []
           (_etype44, _size41) = iprot.readListBegin()
-          for _i45 in xrange(_size41):
+          for _i45 in range(_size41):
             _elem46 = []
             (_etype50, _size47) = iprot.readListBegin()
-            for _i51 in xrange(_size47):
+            for _i51 in range(_size47):
               _elem52 = iprot.readString();
               _elem46.append(_elem52)
             iprot.readListEnd()
@@ -383,7 +383,7 @@ class HqlResultAsArrays(object):
 
   def __repr__(self):
     L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
+      for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
 
   def __eq__(self, other):

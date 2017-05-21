@@ -9,8 +9,7 @@ A Flask extension for Hypertable over Thrift.
 
 """
 
-from __future__ import absolute_import, division, print_function, \
-    with_statement, unicode_literals
+
 
 __title__ = 'Flask Hypertable'
 __package_name__ = 'Flask-Hypertable'

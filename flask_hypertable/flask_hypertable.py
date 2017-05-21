@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, division, print_function, \
-    with_statement, unicode_literals
+
 
 __all__ = ['FlaskHypertable', 'FlaskPooledHypertable']
 
 import atexit
 
-from Queue import Queue, Empty, Full
+from queue import Queue, Empty, Full
 from hypertable.thriftclient import ThriftClient
 from thrift.transport import TTransport
 
@@ -192,7 +191,7 @@ class FlaskPooledHypertable(FlaskHypertable):
                     client = self._q.get_nowait()
                     try:
                         client.close()
-                    except Exception, e:
+                    except Exception as e:
                         err = e
                 except Empty:
                     break
